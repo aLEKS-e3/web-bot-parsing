@@ -3,4 +3,6 @@
 {% block content %}
   <p>Hi, it's an Index page! Log in to view a Home page!</p>
   <a href="{% url 'login' %}">Log In</a>
+  <a href="{% url 'signup' %}">Sign Up</a>
+  <p><a href="{% url 'password_reset' %}">I forgot my password :(</a></p>
 {% endblock %}
