@@ -14,7 +14,10 @@ def avatar_image_path(instance: User, filename: str) -> str:
 
 
 class User(AbstractUser):
-    avatar = models.ImageField(null=True, upload_to=avatar_image_path)
+    email = models.EmailField(unique=True, blank=False, null=False)
+    avatar = models.ImageField(
+        null=True, blank=True, upload_to=avatar_image_path
+    )
 
     class Meta:
         ordering = ("username",)
