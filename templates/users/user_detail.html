@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div>
+    <h1>
+      {% if user.avatar %}
+        <img width="15%" height="15%" src="{{ user.avatar.url }}" alt="{{ user.username }}'s avatar">
+      {% else %}
+        <p>No avatar available.</p>
+      {% endif %}
+    <br>
+      @{{ user.username }}
+      {% if user.id == user.id %}
+        <a href="{% url 'users:profile-update' pk=user.id %}" class="btn btn-outline-dark link-to-page">
+          ✍️
+        </a>
+        <a href="{% url 'users:profile-delete' pk=user.id %}" class="btn btn-outline-danger link-to-page">
+          🗑️
+        </a>
+      {% endif %}
+    </h1>
+    <br>
+
+    {% if user.first_name or user.last_name %}
+      <p>
+        {{ user.first_name }} {{ user.last_name }}
+      </p>
+    {% endif %}
+    <p><strong>email: </strong>{{ user.email }}</p>
+    <br>
+
+    <script>
+        function showNotes() {
+            document.getElementById('notesContent').style.display = 'block';
+            document.getElementById('noteGroupsContent').style.display = 'none';
+        }
+
+        function showNoteGroups() {
+            document.getElementById('notesContent').style.display = 'none';
+            document.getElementById('noteGroupsContent').style.display = 'block';
+        }
+    </script>
+
+  </div>
+{% endblock %}
